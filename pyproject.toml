@@ -80,7 +80,8 @@ ignore_missing_imports = true
 testpaths = ["tests"]
 asyncio_mode = "auto"
 # Removed --cov flags so tests can run quickly without coverage overhead during local dev
-addopts = "-v"
+# Added -s to show print() output during test runs, helpful when debugging locally
+addopts = "-v -s"
 
 [tool.coverage.run]
 source = ["src/fincept_terminal"]
