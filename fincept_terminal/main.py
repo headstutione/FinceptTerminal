@@ -70,6 +70,8 @@ def setup_logging(debug: bool = False) -> None:
     )
     logging.getLogger("httpx").setLevel(logging.WARNING)
     logging.getLogger("httpcore").setLevel(logging.WARNING)
+    # Suppress noisy websocket logs that clutter debug output
+    logging.getLogger("websockets").setLevel(logging.WARNING)
 
 
 def main() -> None:
@@ -98,12 +100,3 @@ def main() -> None:
     except KeyboardInterrupt:
         print("\nSession terminated by user. Goodbye!")
         sys.exit(0)
-    except Exception as exc:  # noqa: BLE001
-        import logging
-        logging.getLogger(__name__).exception("Unhandled exception during runtime.")
-        print(f"[FATAL] {exc}", file=sys.stderr)
-        sys.exit(2)
-
-
-if __name__ == "__main__":
-    main()
