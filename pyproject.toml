@@ -82,8 +82,8 @@ testpaths = ["tests"]
 asyncio_mode = "auto"
 # Removed --cov flags so tests can run quickly without coverage overhead during local dev
 # Added -s to show print() output during test runs, helpful when debugging locally
-# Added -x to stop on first failure — saves time when iterating on a broken test
-addopts = "-v -s -x"
+# Removed -x (stop on first failure) so I can see all failures at once when exploring the codebase
+addopts = "-v -s"
 
 [tool.coverage.run]
 source = ["src/fincept_terminal"]
