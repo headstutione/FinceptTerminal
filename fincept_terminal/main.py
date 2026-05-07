@@ -72,6 +72,8 @@ def setup_logging(debug: bool = False) -> None:
     logging.getLogger("httpcore").setLevel(logging.WARNING)
     # Suppress noisy websocket logs that clutter debug output
     logging.getLogger("websockets").setLevel(logging.WARNING)
+    # Also silence urllib3 which can be chatty during market data fetches
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
 def main() -> None:
@@ -97,6 +99,3 @@ def main() -> None:
             file=sys.stderr,
         )
         sys.exit(1)
-    except KeyboardInterrupt:
-        print("\nSession terminated by user. Goodbye!")
-        sys.exit(0)
