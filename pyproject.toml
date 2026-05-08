@@ -84,7 +84,8 @@ asyncio_mode = "auto"
 # Added -s to show print() output during test runs, helpful when debugging locally
 # Removed -x (stop on first failure) so I can see all failures at once when exploring the codebase
 # Added --tb=short to keep tracebacks concise — long tracebacks make it hard to scan multiple failures
-addopts = "-v -s --tb=short"
+# Added --no-header to reduce noise in output — don't need the pytest version banner every run
+addopts = "-v -s --tb=short --no-header"
 
 [tool.coverage.run]
 source = ["src/fincept_terminal"]
